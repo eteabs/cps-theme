@@ -1,0 +1,38 @@
+<footer id="footer" class="cps-footer">
+  <div class="container -fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <h4>Endereço</h4>
+      <address>Av. Bartolomeu de Gusmão, 110<br>Aparecida — Santos-SP,<br>11045-908.</address>
+      <p><a href="https://goo.gl/maps/dAxNg">mostrar mapa</a></p>
+    </div>
+    <div class="col-md-3">
+      <h4>Contato</h4>
+      <p class="lead">(99) 9999-9999<br>(99) 8888-8888</p>
+      <p><a href="#">mail@contato.edu.br</a></p>
+    </div>
+    <div class="col-md-6">
+      <h4>Social</h4>
+      <ul class="nav nav-pills">
+        <li><a href="#"><i class="fa fa-facebook-official fa-lg"></i>&nbsp; Facebook</a></li>
+        <li><a href="#"><i class="fa fa-youtube fa-lg"></i>&nbsp; Youtube</a></li>
+        <li><a href="#"><i class="fa fa-instagram fa-lg"></i>&nbsp; Instagram</a></li>
+        <li><a href="#"><i class="fa fa-linkedin fa-lg"></i>&nbsp; LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <div class="text-center">
+    <p>&copy; 2018 <?php echo get_bloginfo( 'name' ); ?>.</p>
+    <p>Desenvolvido com <a href="#">CPS Front-end</a> por <a href="#">[Nome do Desenvolvedor]</a>.</p>
+  </div>
+</div>
+</footer>
+
+  <!-- CPS Front-end core JavaScript -->
+  <script src="http://adammacias.github.io/cps-frontend/assets/js/main.min.js"></script>
+
+<?php wp_footer(); ?>  
+  
+</body>
+</html>
