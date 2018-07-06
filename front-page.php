@@ -86,32 +86,32 @@
     <div id="content" class="col-md-6" tabindex="-1">
       <h2 class="h3"><i class="fa fa-bullhorn"></i> Notícias</h2>
       <div class="row">
-      
+      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <article class="col-md-6">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x300" class="img-responsive img-rounded" alt="">
+          <a href="<?php the_permalink();?>" class="thumbnail">
+            <img src="<?php the_post_thumbnail();?>" class="img-responsive img-rounded" alt="">
             <div class="caption">
-              <h3 class="h6">Título de exemplo da notícia</h3>
-              <p class="text-muted">09/09/2015</p>
-              <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+              <h3 class="h6"><?php the_title();?></h3>
+              <p class="text-muted"><?php the_date();?></p>
+              <p class="small"><?php the_excerpt();?></p>
             </div>
           </a>
         </article>
 
         <article class="col-md-6">
-          <a href="#" class="thumbnail">
-            
+          <a href="<?php the_permalink();?>" class="thumbnail">
             <div class="caption">
-              <h3 class="h6">Título de exemplo da notícia</h3>
-              <p class="text-muted">09/09/2015</p>
-              <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+              <h3 class="h6"><?php the_title();?></h3>
+              <p class="text-muted"><?php the_date();?></p>
+              <p class="small"><?php the_excerpt();?></p>
             </div>
           </a>
         </article>
-      
       </div>
       <p class="text-center"><a href="#" class="btn btn-default btn-block">Ver mais notícias</a></p>
     </div>
+        <?php endwhile; endif; ?>
+
     <aside class="col-md-6">
 
       <?php the_widget( 'My_Widget_Agenda' ); ?>
