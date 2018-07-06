@@ -2,94 +2,26 @@
 
 <?php get_header();?>
 
-<div class="container">
-  <div id="carousel-example" class="carousel carousel-thumbnail slide" data-ride="carousel">
-    <!-- carousel indicadores -->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example" data-slide-to="1"></li>
-      <li data-target="#carousel-example" data-slide-to="2"></li>
-    </ol>
-    <!-- carousel slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <div class="row">
-          <div class="col-xs-6">
-            <a class="thumbnail thumbnail-lg">
-              <img src="http://placehold.it/930x930" alt="" class="img-responsive">
-              <div class="thumbnail-caption">
-                <h3 class="thumbnail-caption-title">Primeiro slide <br>Coluna um</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-xs-6">
-            <a class="thumbnail thumbnail-lg">
-              <img src="http://placehold.it/930x930" alt="First slide image" class="img-responsive">
-              <div class="thumbnail-caption">
-                <h3 class="thumbnail-caption-title">Primeiro slide <br>Coluna dois</h3>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <a class="thumbnail thumbnail-lg">
-          <img src="http://placehold.it/930x450" alt="">
-          <div class="thumbnail-caption">
-            <h3 class="thumbnail-caption-title">Segundo slide</h3>
-          </div>
-        </a>
-      </div>
-      <div class="item">
-        <div class="row">
-          <div class="col-xs-6">
-            <a class="thumbnail thumbnail-sm">
-              <img src="http://placehold.it/930x930" alt="">
-              <div class="thumbnail-caption">
-                <h3 class="thumbnail-caption-title">Primeiro slide <br>Coluna um, Caixa um</h3>
-              </div>
-            </a>
-            <a class="thumbnail thumbnail-sm">
-              <img src="http://placehold.it/930x930" alt="">
-              <div class="thumbnail-caption">
-                <h3 class="thumbnail-caption-title">Primeiro slide <br>Coluna um, Caixa dois</h3>
-              </div>
-            </a>
-          </div>
-          <div class="col-xs-6">
-            <a class="thumbnail thumbnail-lg">
-              <img src="http://placehold.it/930x930" alt="">
-              <div class="thumbnail-caption">
-                <h3 class="thumbnail-caption-title">Primeiro slide <br>Coluna dois</h3>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- carousel setas -->
-    <div class="hidden-xs">
-      <a data-slide="prev" href="#carousel-example" class="left carousel-control">‹</a>
-      <a data-slide="next" href="#carousel-example" class="right carousel-control hidden-xs">›</a>
-    </div>
-    <div class="visible-xs">
-      <a data-slide="prev" href="#carousel-example" class="pull-left carousel-control-xs btn btn-default ">‹ Anterior</a>
-      <a data-slide="next" href="#carousel-example" class="pull-right carousel-control-xs btn btn-default visible-xs">Próximo ›</a>
-    </div>
-  </div>
-</div>
-
-<hr>
+<!-- aqui entra o carousel -->
 
 <main class="cps-main">
   <div class="row">
     <div id="content" class="col-md-6" tabindex="-1">
-      <h2 class="h3"><i class="fa fa-bullhorn"></i> Notícias</h2>
+      <h2 class="h3">
+        <i class="fa fa-bullhorn"></i> Notícias</h2>
       <div class="row">
-      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
+      <?php
+        $args = array('post_type' => 'post');
+        $query = new WP_Query($args);
+        if ($query->have_posts()) {
+          while ($query->have_posts()) {
+            $query->the_post();
+      ?>
+
         <article class="col-md-6">
           <a href="<?php the_permalink();?>" class="thumbnail">
-            <img src="<?php the_post_thumbnail();?>" class="img-responsive img-rounded" alt="">
+            <!-- <img src="<?php the_post_thumbnail();?>" class="img-responsive img-rounded" alt=""> -->
             <div class="caption">
               <h3 class="h6"><?php the_title();?></h3>
               <p class="text-muted"><?php the_date();?></p>
@@ -98,29 +30,28 @@
           </a>
         </article>
 
-        <article class="col-md-6">
-          <a href="<?php the_permalink();?>" class="thumbnail">
-            <div class="caption">
-              <h3 class="h6"><?php the_title();?></h3>
-              <p class="text-muted"><?php the_date();?></p>
-              <p class="small"><?php the_excerpt();?></p>
-            </div>
-          </a>
-        </article>
+      <?php
+          }
+        }
+
+        wp_reset_postdata();
+      ?>
       </div>
-      <p class="text-center"><a href="#" class="btn btn-default btn-block">Ver mais notícias</a></p>
+      <p class="text-center">
+        <a href="#" class="btn btn-default btn-block">Ver mais notícias</a>
+      </p>
     </div>
-        <?php endwhile; endif; ?>
 
     <aside class="col-md-6">
 
-      <?php the_widget( 'My_Widget_Agenda' ); ?>
+      <?php the_widget('My_Widget_Agenda');?>
 
-      <?php the_widget( 'My_Widget_Destaque' ); ?>
+      <?php the_widget('My_Widget_Destaque');?>
 
-      <?php the_widget( 'My_Widget_Social' ); ?>
+      <?php the_widget('My_Widget_Social');?>
 
     </aside>
+
   </div>
 </main>
 

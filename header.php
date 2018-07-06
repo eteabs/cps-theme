@@ -28,7 +28,7 @@
         <div class="container">
         <div class="logo-group">
         <div class="logo-group-item">
-            <a class="logo logo-fatec" href="#" title="Página Inicial" data-title="Baixada Santista" data-sub-title="Rubens Lara">
+            <a class="logo logo-etec" href="#" title="Página Inicial" data-title="Baixada Santista" data-sub-title="Rubens Lara">
             <h1 class="sr-only">Fatec Baixada Santista - Rubens Lara</h1>
             </a>
         </div>
@@ -58,43 +58,18 @@
       <a class="navbar-brand visible-xs" href="#">Fatec-RL</a>
     </div>
     <div id="navbar-collapsed" class="collapse navbar-collapse ">
-      <ul class="nav navbar-nav">
-        <li class="home"><a href="#">Início</a></li>
-    <?php
-        wp_nav_menu( array( 'theme_location' => 'header-menu-left' ) );
-    ?>
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li class="dropdown">
-          <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li role="presentation" class="dropdown-header">Graduação</li>
-            <li><a href="#">Curso 1</a></li>
-            <li><a href="#">Curso 2</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation" class="dropdown-header">Graduação a distância</li>
-            <li><a href="#">Curso 3</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      <?php
-        wp_nav_menu( array( 'theme_location' => 'header-menu-right' ) );
-    ?>
-        <li class="dropdown">
-          <a href="#" data-toggle="dropdown" class="dropdown-toggle">Área exclusiva &nbsp;<i class="fa fa-user fa-fw" aria-hidden="true"></i></a>
-          <ul class="dropdown-menu">
-            <li role="presentation" class="dropdown-header">Acesso restrito</li>
-            <li><a href="#"><i class="fa fa-lock fa-fw" aria-hidden="true"></i>&nbsp; SIGA</a></li>
-            <li><a href="#"><i class="fa fa-lock fa-fw" aria-hidden="true"></i>&nbsp; Moodle</a></li>
-            <li><a href="#"><i class="fa fa-lock fa-fw" aria-hidden="true"></i>&nbsp; E-mail Fatec</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation" class="dropdown-header">Aluno</li>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-          </ul>
-        </li>
-      </ul>
+        <?php
+            wp_nav_menu(array(
+                'theme_location' => 'header-menu-left',
+                'menu_class' => 'nav navbar-nav',
+                'fallback_cb' => 'primary_menu_fallback',
+        ));?>
+
+        <?php
+            wp_nav_menu(array(
+                'theme_location' => 'header-menu-right',
+                'menu_class' => 'nav navbar-nav navbar-right',
+        ));?>
     </div>
   </div>
 </nav>
